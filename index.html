@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BauCua-Project</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="baucua_container flex flex-col items-center justify-center h-screen gap-20">
+        <div class="result_notification text-5xl mb-[-2rem] font-serif text-red-400 opacity-0">What a pity !!! Please try again </div>
+        <div class="baucua__result_container">
+            <div class="result_container_imgs flex gap-10">
+                <img src="./imgs/bau.png" alt="img_1" class="result_img image">
+                <img src="./imgs/bau.png" alt="img_2" class="result_img image">
+                <img src="./imgs/bau.png" alt="img_3" class="result_img image">
+            </div>
+        </div>
+        <div class="baucua__bet_container flex flex-col items-end">
+            <button class="bet_container_btn_for_result mb-20 border py-2 px-8 bg-blue-400 rounded-lg text-slate-100 active:bg-blue-900">Quay</button>
+            <div class="bet_container_imgs flex gap-10">
+            </div>
+            <button class="bet_container_btn_for_reset mt-20 border py-2 px-8 bg-blue-400 rounded-lg text-slate-100 active:bg-blue-900">Đặt lại</button>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
