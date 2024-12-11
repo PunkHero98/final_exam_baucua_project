@@ -44,7 +44,7 @@ function adjustLabelsPosition() {
 
 function addEventListeners() {
     document.querySelectorAll('.bet_container_imgs .img_bet').forEach(f => {
-        f.addEventListener('click', handleImageClick);
+        f.addEventListener('mouseup', handleImageClick);
     });
 
     resetButton.addEventListener('click', resetGame);
@@ -52,6 +52,7 @@ function addEventListeners() {
 }
 
 function handleImageClick() {
+
     if (clickedPic.length > 2) return;
 
     const value = parseInt(this.firstElementChild.innerHTML);
@@ -62,6 +63,13 @@ function handleImageClick() {
 }
 
 function resetGame() {
+    if(clickedPic.length === 0){
+        notification.classList.remove('opacity-0');
+        notification.innerHTML = 'You have not bet anything ! Please choose one of those pictures below';
+        notification.classList.add('text-red-400');
+        notification.classList.remove('text-green-400');
+        return;
+    }
     clickedPic = [];
     document.querySelectorAll('.bet_container_imgs .img_bet').forEach(f => {
         f.children[1].style.padding = '1rem';
@@ -71,6 +79,13 @@ function resetGame() {
 }
 
 function startResultGeneration() {
+    if(clickedPic.length === 0 ){
+        notification.classList.remove('opacity-0');
+        notification.innerHTML = 'You have not bet anything ! Please choose one of those pictures below';
+        notification.classList.add('text-red-400');
+        notification.classList.remove('text-green-400');
+        return;
+    }
     let count = 0;
     resultButton.setAttribute('disabled', 'true');
     resetButton.setAttribute('disabled', 'true');
@@ -123,8 +138,7 @@ function checkResult() {
         return false;
     }
 
-    clickedPic.sort();
-    resultPic.sort();
-
-    return clickedPic.every((value, index) => value === resultPic[index]);
+    const areArraysIdentical = [...new Set(clickedPic)].length === [...new Set(resultPic)].length &&
+    [...new Set(clickedPic)].every(item => new Set(resultPic).has(item));
+    return areArraysIdentical;
 }
